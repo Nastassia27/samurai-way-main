@@ -10,7 +10,7 @@ function App() {
           <Technologies />
     <div className="App">
 
-     IT-Kamasutra.com Hello, samurai! Let's go!</div>
+     IT-Kamasutra.com Hello, samurai! Let's go! let's go</div>
      </div>
 
   );
