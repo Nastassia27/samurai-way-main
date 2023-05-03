@@ -13,3 +13,11 @@
 .item a.activeLink {
     color: gold;
 }
+
+.side{
+    display: grid;
+    grid-template-columns: repeat(3, 5px); /* three columns with equal width */
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
