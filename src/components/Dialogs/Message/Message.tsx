@@ -8,8 +8,15 @@ type PropsType={
 }
 
 const Message: React.FC<PropsType> = (props) => {
+
+
+
+
     return (
-        <div className={s.message}>{props.message.message}</div>
+        <div className={s.message}>
+            {props.message.message}
+
+        </div>
     )
 }
 

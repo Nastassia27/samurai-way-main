@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {PostType, ProfilePageType} from "../../../redux/state";
+import store, {PostType, ProfilePageType} from "../../../redux/state";
 
 type MyPostsType={
     posts: PostType[]
+    addPost: () =>void
+    newPostText: string;
+    updateNewPostText: (newText: string)=>void
+
 }
 
 /*type MyPostsType={
@@ -18,13 +22,23 @@ type MyPostsType={
 }*/
 const MyPosts: React.FC<MyPostsType> = (props) => {
     let postsElements = props.posts.map((post) => <Post post = {post}/>)
+
+    let addPost=()=>{
+
+        props.addPost()
+
+        }
+    const newTextChangeHandler=(e:ChangeEvent<HTMLTextAreaElement>)=>{
+        props.updateNewPostText(e.currentTarget.value)
+    }
+
     return (
         <div className={s.postsBlock}>
             <h2>My Posts</h2>
             <div>
-                <textarea></textarea></div>
+                <textarea onChange={newTextChangeHandler} value={props.newPostText}/></div>
             <div>
-                <button>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
 
             <div>
