@@ -36,38 +36,56 @@ const store: StoreType = {
 
         }
     },
-    _onChange(){
+    _onChange() {
         console.log('State was changed')
     },
-    addPost(){
-        const newPost: PostType = {
-            id:5,
+    getState() {
+        return this._state
+    },
+    subscribe(observer) {
+        this._onChange = observer;
+    },
+
+    addPost() {
+        /*const newPost: PostType = {
+            id: 5,
             message: this._state.profilePage.newPostText,
-            likesCount:0
+            likesCount: 0
         };
         this._state.profilePage.posts.push(newPost);
         this._state.profilePage.newPostText = ''
-        this._onChange();
+        this._onChange();*/
     },
-    subscribe(observer){
-        this._onChange = observer;
+    updateNewPostText(newText: string) {
+        /* this._state.profilePage.newPostText = newText;
+         this._onChange();*/
     },
-    updateNewPostText (newText: string){
-        this._state.profilePage.newPostText =newText;
-        this._onChange();
-    },
-    getState(){
-        return this._state
+
+    dispatch(action) { //это объект {type: 'ADD-POST'}
+        if (action.type === 'ADD-POST') {
+            const newPost: PostType = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = ''
+            this._onChange();
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._onChange();
+        }
     }
+
 }
 
-export type StoreType={
-    _state:RootStateType
-    updateNewPostText: (newText: string)=>void
-    addPost: ()=>void
-    _onChange: ()=>void
-    subscribe: (observer: ()=>void)=>void
-    getState:()=>RootStateType
+export type StoreType = {
+    _state: RootStateType
+    updateNewPostText: (newText: string) => void
+    addPost: () => void
+    _onChange: () => void
+    subscribe: (observer: () => void) => void
+    getState: () => RootStateType
 }
 
 export type MessageType = {
@@ -86,34 +104,30 @@ export type PostType = {
     likesCount: number
 }
 
-export type ProfilePageType={
-    posts:Array<PostType>
+export type ProfilePageType = {
+    posts: Array<PostType>
     newPostText: string
 }
 
-export type DialogPageType={
+export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
 
-export type FriendsType={
+export type FriendsType = {
     id: number
     name: string
 }
 
-export type SidebarType={
+export type SidebarType = {
     friends: Array<FriendsType>
 }
 
-export type RootStateType={
+export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
     sidebar: SidebarType
 }
-
-
-
-
 
 
 export default store;
