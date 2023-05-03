@@ -25,11 +25,14 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
 
     let addPost=()=>{
 
-        props.addPost()
+        props.dispatch({type:'ADD-POST'})
 
         }
     const newTextChangeHandler=(e:ChangeEvent<HTMLTextAreaElement>)=>{
-        props.updateNewPostText(e.currentTarget.value)
+        let text = e.currentTarget.value
+        //props.dispatch(e.currentTarget.value)
+        let action = {type:'UPDATE-NEW-POST-TEXT', newText: text};
+        props.dispatch(action)
     }
 
     return (
