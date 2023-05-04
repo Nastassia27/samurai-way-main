@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
 const store: StoreType = {
     _state: {
@@ -27,7 +29,8 @@ const store: StoreType = {
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'buy'}
 
-            ]
+            ],
+            newMessage:'',
         },
         sidebar: {
             friends: [
@@ -62,6 +65,17 @@ const store: StoreType = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText;
             this._onChange();
+        } else if (action.type ==='ADD-MESSAGE'){
+            const newMessage: MessageType= {
+                id: 5,
+                message: this._state.dialogsPage.newMessage,
+            };
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessage=''
+            this._onChange();
+        } else if (action.type ==='UPDATE-NEW-MESSAGE'){
+            this._state.dialogsPage.newMessage = action.newMess
+            this._onChange();
         }
     }
 
@@ -72,9 +86,14 @@ export const updateNewPostTextActionCreator = (text:string)=> ({
         type: UPDATE_NEW_POST_TEXT,
         newText: text
     }) as const
+export const addMessageActionCreator =()=>({type: ADD_MESSAGE}) as const
 
+export const updateNewMessageAC = (message: string)=> ({
+    type: UPDATE_NEW_MESSAGE,
+    newMess: message
+}) as const
 
-export type ActionsTypes=ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator>
+export type ActionsTypes=ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> | ReturnType<typeof addMessageActionCreator> | ReturnType<typeof updateNewMessageAC>
 
 export type StoreType = {
     _state: RootStateType
@@ -110,6 +129,7 @@ export type ProfilePageType = {
 export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    newMessage: string
 }
 
 export type FriendsType = {
