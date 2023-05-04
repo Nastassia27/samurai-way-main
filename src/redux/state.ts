@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./profile-reducer";
+import dialogsReducer, {addMessageActionCreator, updateNewMessageAC} from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 const store: StoreType = {
     _state: {
@@ -53,45 +52,15 @@ const store: StoreType = {
     },
 
     dispatch(action) { //это объект {type: 'ADD-POST'}
-        if (action.type === ADD_POST) {
-            const newPost: PostType = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = ''
-            this._onChange();
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._onChange();
-        } else if (action.type ===ADD_MESSAGE){
-            const newMessage: MessageType= {
-                id: 5,
-                message: this._state.dialogsPage.newMessageBody,
-            };
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageBody=''
-            this._onChange();
-        } else if (action.type === UPDATE_NEW_MESSAGE){
-            this._state.dialogsPage.newMessageBody = action.newMess
-            this._onChange();
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._onChange();
     }
 
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST }) as const
-export const updateNewPostTextActionCreator = (text:string)=> ({
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }) as const
-export const addMessageActionCreator =()=>({type: ADD_MESSAGE}) as const
-
-export const updateNewMessageAC = (message: string)=> ({
-    type: UPDATE_NEW_MESSAGE,
-    newMess: message
-}) as const
 
 export type ActionsTypes=ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> | ReturnType<typeof addMessageActionCreator> | ReturnType<typeof updateNewMessageAC>
 
