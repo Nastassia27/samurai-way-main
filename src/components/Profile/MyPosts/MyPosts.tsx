@@ -3,11 +3,9 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import store, {
     ActionsTypes,
-    addPostActionCreator,
-    PostType,
-    ProfilePageType,
-    updateNewPostTextActionCreator
-} from "../../../redux/state";
+    PostType} from "../../../redux/state";
+
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
 type MyPostsType = {
     posts: PostType[]
