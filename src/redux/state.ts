@@ -30,7 +30,7 @@ const store: StoreType = {
                 {id: 5, message: 'buy'}
 
             ],
-            newMessage:'',
+            newMessageBody:'',
         },
         sidebar: {
             friends: [
@@ -53,7 +53,7 @@ const store: StoreType = {
     },
 
     dispatch(action) { //это объект {type: 'ADD-POST'}
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostType = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -62,19 +62,19 @@ const store: StoreType = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = ''
             this._onChange();
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._onChange();
-        } else if (action.type ==='ADD-MESSAGE'){
+        } else if (action.type ===ADD_MESSAGE){
             const newMessage: MessageType= {
                 id: 5,
-                message: this._state.dialogsPage.newMessage,
+                message: this._state.dialogsPage.newMessageBody,
             };
             this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessage=''
+            this._state.dialogsPage.newMessageBody=''
             this._onChange();
-        } else if (action.type ==='UPDATE-NEW-MESSAGE'){
-            this._state.dialogsPage.newMessage = action.newMess
+        } else if (action.type === UPDATE_NEW_MESSAGE){
+            this._state.dialogsPage.newMessageBody = action.newMess
             this._onChange();
         }
     }
@@ -129,7 +129,7 @@ export type ProfilePageType = {
 export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessage: string
+    newMessageBody: string
 }
 
 export type FriendsType = {
