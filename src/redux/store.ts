@@ -29,7 +29,7 @@ const store: StoreType = {
                 {id: 5, message: 'buy'}
 
             ],
-            newMessageBody:'',
+            newMessageBody: '',
         },
         sidebar: {
             friends: [
@@ -62,16 +62,20 @@ const store: StoreType = {
 
 }
 
-export type ActionsTypes=ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> | ReturnType<typeof addMessageActionCreator> | ReturnType<typeof updateNewMessageAC>
+export type ActionsTypes =
+    ReturnType<typeof addPostActionCreator>
+    | ReturnType<typeof updateNewPostTextActionCreator>
+    | ReturnType<typeof addMessageActionCreator>
+    | ReturnType<typeof updateNewMessageAC>
 
 export type StoreType = {
     _state: RootStateType
     //updateNewPostText: (newText: string) => void
-   //addPost: () => void
+    //addPost: () => void
     _onChange: () => void
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    dispatch:(action: ActionsTypes)=>void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export type MessageType = {
