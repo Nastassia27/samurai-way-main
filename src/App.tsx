@@ -6,7 +6,7 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 //import {RootStateType, StoreType, updateNewPostText} from "./redux/state";
-import store, {ActionsTypes, RootStateType} from "./redux/state";
+import store, {ActionsTypes, RootStateType} from "./redux/store";
 type AppPropsType={
     state: RootStateType
     dispatch:(action: ActionsTypes)=>void

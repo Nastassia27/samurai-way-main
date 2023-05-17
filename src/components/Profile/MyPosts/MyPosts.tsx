@@ -3,7 +3,8 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import store, {
     ActionsTypes,
-    PostType} from "../../../redux/state";
+    PostType
+} from "../../../redux/store";
 
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
@@ -15,30 +16,14 @@ type MyPostsType = {
     dispatch: (action: ActionsTypes) => void
 
 }
-
-/*type MyPostsType={
-    posts: Array<PostsArray>
-}*/
-
-/*type PostsArray={
-    id: number
-    message: string
-    likesCount: number
-}*/
-
-
 const MyPosts: React.FC<MyPostsType> = (props) => {
     let postsElements = props.posts.map((post) => <Post post={post}/>)
 
     let addPost = () => {
-
         props.dispatch(addPostActionCreator())
-
     }
     const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        //props.dispatch(e.currentTarget.value)
-
         props.dispatch(updateNewPostTextActionCreator(text))
     }
 
@@ -49,10 +34,6 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
                 <textarea onChange={newTextChangeHandler} value={props.newPostText}/></div>
             <div>
                 <button onClick={addPost}>Add post</button>
-            </div>
-
-            <div>
-                new post
             </div>
             <div className={s.posts}>
 
