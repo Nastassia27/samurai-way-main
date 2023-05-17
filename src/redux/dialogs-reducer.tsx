@@ -1,9 +1,9 @@
-import {ActionsTypes, MessageType, RootStateType} from "./state";
+import {ActionsTypes, DialogPageType, MessageType, RootStateType, StoreType} from "./store";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
-const dialogsReducer = (state: any, action: ActionsTypes) => {
+const dialogsReducer = (state: DialogPageType, action: ActionsTypes) => {
 
     switch (action.type) {
         case ADD_MESSAGE:
