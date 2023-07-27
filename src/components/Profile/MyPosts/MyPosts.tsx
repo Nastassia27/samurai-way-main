@@ -11,22 +11,24 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../red
 type MyPostsType = {
     posts: PostType[]
     //addPost: () =>void
-    newPostText: string;
+    newPostText?: string;
     //updateNewPostText: (newText: string)=>void
-    dispatch: (action: ActionsTypes) => void
+    dispatch?: (action: ActionsTypes) => void
+    updateNewPostText: (text: string)=>void
+    addPost: ()=>void
 
 }
 const MyPosts: React.FC<MyPostsType> = (props) => {
     let postsElements = props.posts.map((post) => <Post post={post}/>)
 
     let addPost = () => {
-        //props.addPost()
-        props.dispatch(addPostActionCreator())
+        props.addPost()
+        //props.dispatch(addPostActionCreator())
     }
     const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        //props.updateNewPostText(text)
-        props.dispatch(updateNewPostTextActionCreator(text))
+        props.updateNewPostText(text)
+        //props.dispatch(updateNewPostTextActionCreator(text))
     }
 
     return (

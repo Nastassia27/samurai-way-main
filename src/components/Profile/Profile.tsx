@@ -3,6 +3,7 @@ import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import store, {ActionsTypes, ProfilePageType} from "../../redux/store";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 type ProfileType = {
@@ -16,7 +17,7 @@ const Profile: React.FC<ProfileType> = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} dispatch={props.dispatch} newPostText={props.state.newPostText} />
+            <MyPostsContainer store = {props.store} {/*posts={props.state.posts} dispatch={props.dispatch} newPostText={props.state.newPostText}*/} />
         </div>
     )
 }

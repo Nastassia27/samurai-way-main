@@ -7,6 +7,7 @@ import store, {
 } from "../../../redux/store";
 
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import MyPosts from "./MyPosts";
 
 type MyPostsType = {
     posts: PostType[]
@@ -16,35 +17,27 @@ type MyPostsType = {
     dispatch: (action: ActionsTypes) => void
 
 }
-const MyPosts: React.FC<MyPostsType> = (props) => {
-    let postsElements = props.posts.map((post) => <Post post={post}/>)
+const MyPostsContainer: React.FC<MyPostsType> = (props) => {
+    //let postsElements = props.posts.map((post) => <Post post={post}/>)
 
     let addPost = () => {
         //props.addPost()
         props.dispatch(addPostActionCreator())
     }
-    const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    /*const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
         //props.updateNewPostText(text)
         props.dispatch(updateNewPostTextActionCreator(text))
+    }*/
+    const newTextChangeHandler = (text: string) => {
+
+        let action = updateNewPostTextActionCreator(text)
+        props.dispatch(action)
     }
 
     return (
-        <div className={s.postsBlock}>
-            <h2>My Posts</h2>
-            <div>
-                <textarea onChange={newTextChangeHandler} value={props.newPostText}/></div>
-            <div>
-                <button onClick={addPost}>Add post</button>
-            </div>
-            <div className={s.posts}>
-
-                {postsElements}
-
-            </div>
-        </div>
-
+       <MyPosts posts = {props.posts} updateNewPostText={newTextChangeHandler} addPost={addPost}/>
     )
 }
 
-export default MyPosts;
+export default MyPostsContainer;
