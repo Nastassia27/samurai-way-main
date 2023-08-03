@@ -6,9 +6,9 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 //import {RootStateType, StoreType, updateNewPostText} from "./redux/state";
-import store, {ActionsTypes, RootStateType} from "./redux/store";
+import store, {ActionsTypes, AppStateType} from "./redux/redux-store";
 type AppPropsType={
-    state: RootStateType
+    store: AppStateType
     dispatch:(action: ActionsTypes)=>void
     /*addPost:()=>void
     updateNewPostText: (newText: string)=>void*/
@@ -21,13 +21,16 @@ const App: React.FC<AppPropsType> = (props) =>{
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar state={props.state.sidebar.friends}/>
+                <Navbar store = {props.store} />
+                {/*state={props.state.sidebar.friends}*/}
 
                 <div className='app-wrapper-content'>
 
 
-                    <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
-                    <Route path='/profile' render={() => <Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs store = {props.store}  dispatch={props.dispatch}/>}/>
+                    {/*state={props.state.dialogsPage}*/}
+                    <Route path='/profile' render={() => <Profile store = {props.store} dispatch={props.dispatch}/>}/>
+                    {/*state={props.state}*/}
                 </div>
             </div>
         </BrowserRouter>

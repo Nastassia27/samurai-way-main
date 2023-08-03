@@ -2,20 +2,26 @@ import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import store, {
-    ActionsTypes,
-    PostType
-} from "../../../redux/store";
+    ActionsTypes, AppStateType,
+} from "../../../redux/redux-store";
 
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
+export type PostType = {
+    id: number
+    message: string
+    likesCount: number
+}
+
 type MyPostsType = {
-    posts: PostType[]
+   //posts: PostType[]
     //addPost: () =>void
-    newPostText?: string;
+   newPostText: string;
     //updateNewPostText: (newText: string)=>void
-    dispatch?: (action: ActionsTypes) => void
+    //dispatch?: (action: ActionsTypes) => void
     updateNewPostText: (text: string)=>void
     addPost: ()=>void
+    posts: Array<PostType>
 
 }
 const MyPosts: React.FC<MyPostsType> = (props) => {

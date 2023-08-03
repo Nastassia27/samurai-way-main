@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {rerenderEntireTree} from "./render";
-import store from "./redux/store";
+import store from "./redux/redux-store";
 
 /*
 const rerenderEntireTree=(state)=>{
@@ -13,12 +13,12 @@ const rerenderEntireTree=(state)=>{
     );
 */
 //}
-
+/*
 store.subscribe(rerenderEntireTree)
-rerenderEntireTree();
-/*store.subscribe(()=>{
+rerenderEntireTree();*/
+store.subscribe(()=>{
    let state = store.getState()
     rerenderEntireTree(state)
-})*/
+})
 
 //addPost('Samurai JS')

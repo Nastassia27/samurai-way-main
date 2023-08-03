@@ -1,3 +1,4 @@
+/*
 import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {addMessageActionCreator, updateNewMessageAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
@@ -62,21 +63,7 @@ const store: StoreType = {
 
 }
 
-export type ActionsTypes =
-    ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof updateNewPostTextActionCreator>
-    | ReturnType<typeof addMessageActionCreator>
-    | ReturnType<typeof updateNewMessageAC>
 
-export type StoreType = {
-    _state: RootStateType
-    //updateNewPostText: (newText: string) => void
-    //addPost: () => void
-    _onChange: () => void
-    subscribe: (observer: () => void) => void
-    getState: () => RootStateType
-    dispatch: (action: ActionsTypes) => void
-}
 
 export type MessageType = {
     id: number
@@ -121,4 +108,6 @@ export type RootStateType = {
 }
 
 
-export default store;
+export default store;*/
+let a = 1
+export default a
