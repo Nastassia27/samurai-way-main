@@ -16,9 +16,9 @@ const rerenderEntireTree=(state)=>{
 /*
 store.subscribe(rerenderEntireTree)
 rerenderEntireTree();*/
-store.subscribe(()=>{
+/*store.subscribe(()=>{
    let state = store.getState()
     rerenderEntireTree(state)
-})
+})*/
 
 //addPost('Samurai JS')
