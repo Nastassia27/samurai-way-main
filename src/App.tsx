@@ -7,6 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 //import {RootStateType, StoreType, updateNewPostText} from "./redux/state";
 import store, {ActionsTypes, AppStateType} from "./redux/redux-store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 type AppPropsType={
     store: AppStateType
     dispatch:(action: ActionsTypes)=>void
@@ -27,7 +28,7 @@ const App: React.FC<AppPropsType> = (props) =>{
                 <div className='app-wrapper-content'>
 
 
-                    <Route path='/dialogs' render={() => <Dialogs store = {props.store}  dispatch={props.dispatch}/>}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer store = {props.store}  dispatch={props.dispatch}/>}/>
                     {/*state={props.state.dialogsPage}*/}
                     <Route path='/profile' render={() => <Profile store = {props.store} dispatch={props.dispatch}/>}/>
                     {/*state={props.state}*/}

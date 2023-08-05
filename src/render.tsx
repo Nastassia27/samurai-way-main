@@ -10,7 +10,8 @@ export const rerenderEntireTree=(state: AppStateType)=>{
 
     ReactDOM.render(
         <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} store = {store}/>,
+        <App  dispatch={store.dispatch.bind(store)} store = {store}/>,
+            {/*state={state}*/}
 
         </BrowserRouter>,
         document.getElementById('root')

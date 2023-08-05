@@ -23,3 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+# Игнорировать файл package.json
+package.json
+
+# Игнорировать файл yarn.lock
+yarn.lock
