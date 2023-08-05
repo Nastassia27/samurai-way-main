@@ -6,33 +6,27 @@ import store, {
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import Post from "./Post/Post";
+import {connect} from "react-redux";
+import {addMessageActionCreator, updateNewMessageAC} from "../../../redux/dialogs-reducer";
 
-type MyPostsType = {
-
-    store: AppStateType
-    //newPostText: string;
-    dispatch: (action: ActionsTypes) => void
-
-}
-const MyPostsContainer: React.FC<MyPostsType> = (props) => {
-    let state = props.store
-
-    let addPost = () => {
-        props.dispatch(addPostActionCreator())
+let mapStateToProps = (state: AppStateType)=>{
+    return {
+        posts:state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
-    const newTextChangeHandler = (text: string) => {
-        let action = updateNewPostTextActionCreator(text)
-        props.dispatch(action)
-    }
-
-    return (
-        <MyPosts posts={state.profilePage.posts}
-                 updateNewPostText={newTextChangeHandler}
-                 addPost={addPost}
-                 newPostText={state.profilePage.newPostText}
-
-        />
-    )
 }
 
+let mapDispatchToProps = (dispatch: (action: ActionsTypes)=>void)=>{
+    return {
+        updateNewPostText:(text: string)=>{
+            let action = updateNewPostTextActionCreator(text)
+            dispatch(action)
+        },
+        addPost:()=>{
+        dispatch(addPostActionCreator())
+        }
+    }
+}
+
+const MyPostsContainer = connect(mapStateToProps,mapDispatchToProps)(MyPosts)
 export default MyPostsContainer;
