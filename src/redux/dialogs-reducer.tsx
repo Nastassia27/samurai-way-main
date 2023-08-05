@@ -40,7 +40,7 @@ const dialogsReducer = (state: InitialStateType=initialState, action: ActionsTyp
     switch (action.type) {
         case ADD_MESSAGE:
             const newMessage = {
-                id: 5,
+                id: 6,
                 message: state.newMessageBody,
             };
             /*state.messages.push(newMessage)
