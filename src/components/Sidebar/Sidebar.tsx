@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Sidebar.module.css';
-import {FriendsType} from "../../redux/store";
+import {FriendsType} from "../../redux/sidebar-reducer";
 
 type PropsType={
     friend: FriendsType

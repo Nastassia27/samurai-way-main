@@ -1,10 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {rerenderEntireTree} from "./render";
-import store from "./redux/redux-store";
-
 /*
 const rerenderEntireTree=(state)=>{
     ReactDOM.render(
@@ -22,3 +15,26 @@ rerenderEntireTree();*/
 })*/
 
 //addPost('Samurai JS')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import store, {AppStateType} from "./redux/redux-store"
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />,
+        </Provider>
+    </BrowserRouter>,
+    document.getElementById('root'))
+
+
+//rerenderEntireTree(store.getState())
+
+
+//addPost('Samurai JS')
+

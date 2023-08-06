@@ -7,10 +7,10 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 type ProfileType = {
-   store: AppStateType
+/*   store: AppStateType*/
   /*  addPost:()=>void
     updateNewPostText: (newText: string)=>void*/
-   dispatch:(action: ActionsTypes)=>void
+/*   dispatch:(action: ActionsTypes)=>void*/
     //store: AppStateType
 }
 const Profile: React.FC<ProfileType> = (props) => {
@@ -18,7 +18,7 @@ const Profile: React.FC<ProfileType> = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsContainer store = {props.store} dispatch={props.dispatch} />
+            <MyPostsContainer  />
             {/**posts={props.state.posts} dispatch={props.dispatch} newPostText={props.state.newPostText}*/}
         </div>
     )

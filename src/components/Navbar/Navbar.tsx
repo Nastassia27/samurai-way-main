@@ -3,13 +3,15 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {Sidebar} from "../Sidebar/Sidebar";
 import {AppStateType} from "../../redux/redux-store";
+import {useSelector} from "react-redux";
 
 
 type PropsType = {
-    store: AppStateType
+   // store: AppStateType
 }
 const Navbar: React.FC<PropsType> = (props) => {
-   let state = props.store
+    const state = useSelector((state: AppStateType) => state);
+    //let state = props.store
     let oneFriend = state.sidebar.friends.map(friend => <Sidebar friend={friend}/>)
     return (
         <div>
