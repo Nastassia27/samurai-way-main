@@ -9,14 +9,25 @@ type LocationType={
     city: string,
     country: string,
 }
-export type UsersType={
+/*export type UsersType={
     id: number,
     followed: boolean,
     photoUrl: string,
     fullName: string,
     status: string,
     location: LocationType
+}*/
+export type UsersType={
+    id: number,
+    followed: boolean,
+    photos: {
+        small: string,
+        large: string
+    },
+    name: string,
+    status: string,
 }
+
 
 let initialState = {
     users: [
