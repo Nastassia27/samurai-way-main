@@ -3,7 +3,7 @@ import {reducer} from "redux-form";
 import dialogsReducer, {addMessageActionCreator, updateNewMessageAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./profile-reducer";
-import usersReducer, {followAC, setUsersAC, unfollowAC} from "./users-reducer";
+import usersReducer, {followAC, SetCurrentPageAC, SetTotalUsersCountAC, setUsersAC, unfollowAC} from "./users-reducer";
 
 export type ActionsTypes =
     ReturnType<typeof addPostActionCreator>
@@ -13,6 +13,12 @@ export type ActionsTypes =
     | ReturnType<typeof followAC>
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof SetCurrentPageAC>
+    | ReturnType<typeof SetTotalUsersCountAC>
+
+
+
+
 
 
 let reducers = combineReducers({
